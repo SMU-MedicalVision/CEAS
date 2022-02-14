@@ -125,7 +125,7 @@ Note that, the variable `models` in `ci.py` should be modified depending on comb
 
 ### Visualization
 
-    `python GradCAM_demo.py`
+    python GradCAM_demo.py
 
 Again, you should modify the variable `patient_paths` in `GradCAM_demo.py` to specify the patients exactly to be visualized. 
 
