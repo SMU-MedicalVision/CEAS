@@ -118,7 +118,7 @@ You need to run `loss_log_decode.py` before `test.py` to get the optimal models
 from all the training iteration by calculating the largest AUROC.
 
     python loss_log_decode.py
-    python test.py
+    python test_DL.py
 
 Commands listed above don't give a stats of the model assessment, but rather the predictions in patient level 
 
