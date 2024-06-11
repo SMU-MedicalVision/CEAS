@@ -4,11 +4,11 @@ Pytorch implement of classification for early ankylosing spondylitis. Paper can 
 
 ### TL;DR
 
-Training 
+Training CNNs
 
     python training_script.py --gpus 0 --use_CF --seq FS
 
-Test
+Test CNNs
     
     python loss_log_decode.py 
     python test.py
