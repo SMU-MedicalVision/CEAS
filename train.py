@@ -10,7 +10,7 @@ from collections import OrderedDict
 from sklearn.metrics import roc_auc_score, precision_recall_fscore_support
 from visdom import Visdom
 import argparse
-# test
+# test bnbqq8
 parser = argparse.ArgumentParser('Intelligent diagnosis of Ankylosing Spondylitis(AS)')
 parser.add_argument('--k', type=int, default=None, help='For five-fold cross-validation')
 parser.add_argument('--gpus', type=str, default='1')
