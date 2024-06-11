@@ -6,7 +6,7 @@ Pytorch implement of classification for early ankylosing spondylitis. Paper can 
 
 Training CNNs
 
-    python training_script.py --gpus 0 --use_CF --seq FS
+    python train_script.py
 
 Test CNNs
     
@@ -17,7 +17,11 @@ Test CNNs
 Visualization
 
     python GradCAM_demo.py
-    
+
+Machine Learning 
+
+    python train_ML.py
+
 ### Requirements
 
  To train and test, you need:
@@ -97,16 +101,17 @@ generate the smallest patch that contain the whole ROI:
 
 ### Training
 
-You should specify 4 parameters like the following example:
+You should specify 3 parameters like the following example:
 
-    python train.py  --k 1 --gpus 0 --use_CF --seq FS
+    python train.py  --k 1 --gpus 0 --seq FS
 
+Where `--k` indicates the k-fold, `--gpus` is for specifing the GPU, and `--seq` is for specifing which sequnce to be traind.
 Or you  can directly run the `training_script.py` 
-to perform the whole five-fold cross-validation in one command:
+to perform the whole five-fold cross-validation on all sequences in one command:
 
-    python training_script.py --gpus 0 --use_CF --seq FS
+    python training_script.py
 
-Except for `k`, which represents the `k`th fold of five-fold cross-validation, you still need to specify the other 3 parameters as well.
+
 ### Test
 
 You need to run `loss_log_decode.py` before `test.py` to get the optimal models 
