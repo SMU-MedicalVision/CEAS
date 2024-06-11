@@ -9,7 +9,7 @@ import time
 def NiiDataRead(path):
     start=time.time()
     nii = sitk.ReadImage(path)
-    print(time.time()-start)
+    # print(time.time()-start)
     spacing = nii.GetSpacing()  # [x,y,z]
     volumn = sitk.GetArrayFromImage(nii)  # [z,y,x]
 
@@ -56,7 +56,7 @@ def DCM2NII(DCM_DIR, OUT_PATH):
     spacing = np.array([dicom.SliceThickness, spacing_x, spacing_y])
     NiiDataWrite(OUT_PATH, volume, spacing)
 
-
+# 4dicom转nii调参数
 def DCM2NII2(path_read, path_save):
     '''
     :param path_read: path to .dcms or a list of .dcm paths
@@ -69,8 +69,17 @@ def DCM2NII2(path_read, path_save):
         series_file_names = sitk.ImageSeriesReader.GetGDCMSeriesFileNames(path_read, series_id[0])
     elif isinstance(path_read, list):
         series_file_names = path_read
+        # 按照每层位置(Z轴方向)由小到大排序
+        fuse_list = []
+        for dicom_file in series_file_names:
+            dicom = pydicom.dcmread(dicom_file)
+            fuse_list.append([dicom_file, float(dicom.InstanceNumber)])
+        fuse_list.sort(key=lambda x: x[1])
+        series_file_names = [i[0] for i in fuse_list]
     else:
         raise TypeError
+
+
     series_reader = sitk.ImageSeriesReader()
     series_reader.SetFileNames(series_file_names)
     image3d = series_reader.Execute()
@@ -85,7 +94,7 @@ def DCM2NII2(path_read, path_save):
 
     spacing_ = np.array([spacing_z, spacing_y, spacing_x])
 
-    return len(series_file_names), volumn.astype(np.float32), spacing_.astype(np.float32)
+    return len(series_file_names), volumn.shape, spacing_.astype(np.float32)
 
 def DCM2NII_MRI(DCM_DIR, OUT_PATH):
     """
