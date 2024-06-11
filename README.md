@@ -1,6 +1,6 @@
 # CEAS - Classification of Early Ankylosing Spondylitis based on CNNs and clinical feature
 Pytorch implement of classification for early ankylosing spondylitis. Paper can be found [here](about;blank).
-
+![FLowChart.tif](fig%2FFLowChart.tif)![](./fig/)
 
 ### TL;DR
 
